@@ -18,6 +18,14 @@ sudo chown prometheus:prometheus /etc/prometheus
 sudo chown -R prometheus:prometheus /etc/prometheus/consoles
 sudo chown -R prometheus:prometheus /etc/prometheus/console_libraries
 sudo chown -R prometheus:prometheus /var/lib/prometheus
+
+sudo semanage fcontext -a -t bin_t '/usr/local/bin/prometheus'
+sudo restorecon -Rv /usr/local/bin/prometheus
+sudo semanage fcontext -a -t etc_t '/etc/prometheus(/.*)?'
+sudo restorecon -Rv /etc/prometheus
+sudo semanage fcontext -a -t var_lib_t '/var/lib/prometheus(/.*)?'
+sudo restorecon -Rv /var/lib/prometheus
+  
 cat<<EOF> vim /etc/prometheus/prometheus.yml
 global:
   scrape_interval:     10s
