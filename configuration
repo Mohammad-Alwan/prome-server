@@ -26,7 +26,7 @@ sudo restorecon -Rv /etc/prometheus
 sudo semanage fcontext -a -t var_lib_t '/var/lib/prometheus(/.*)?'
 sudo restorecon -Rv /var/lib/prometheus
   
-cat<<EOF> vim /etc/prometheus/prometheus.yml
+cat<<EOF> /etc/prometheus/prometheus.yml
 global:
   scrape_interval:     10s
   evaluation_interval: 15s
