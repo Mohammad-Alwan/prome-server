@@ -54,7 +54,7 @@ WantedBy=default.target
 EOF
 
 
-openssl req -new -newkey rsa:4096 -x509 -sha256 -days 365 -nodes -out prometheus.crt -keyout prometheus.key
+openssl req -new -newkey rsa:4096 -x509 -sha256 -days 1460 -nodes -out prometheus.crt -keyout prometheus.key
 
 cd /monitoring
 mkdir certs
