@@ -52,3 +52,15 @@ ExecStart=/usr/local/bin/prometheus --config.file=/etc/prometheus/prometheus.yml
 [Install]
 WantedBy=default.target
 EOF
+
+
+openssl req -new -newkey rsa:4096 -x509 -sha256 -days 365 -nodes -out prometheus.crt -keyout prometheus.key
+
+cd /monitoring
+mkdir certs
+openssl req -new -newkey rsa:4096 -x509 -sha256 -days 365 -nodes -out prometheus.crt -keyout prometheus.key
+vi /etc/prometheus/web-config.yaml
+
+tls_server_config:
+  cert_file: /home/cloud/prometheus/
+  key_file: /etc/prometheus/certs/prometheus.key
